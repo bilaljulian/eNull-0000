@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eNull Search and User Account Features</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .section {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Search and Filter Options -->
+        <div class="section" id="search-filter-options">
+            <h2>Search and Filter Options</h2>
+            
+            <!-- Search by Keyword -->
+            <div class="form-group">
+                <label for="search-keyword">Search by Keyword:</label>
+                <input type="text" id="search-keyword" name="search-keyword" placeholder="Enter keywords">
+            </div>
+            
+            <!-- Filter by Category -->
+            <div class="form-group">
+                <label for="filter-category">Filter by Category:</label>
+                <select id="filter-category" name="filter-category">
+                    <option value="">Select Category</option>
+                    <option value="category1">Category 1</option>
+                    <option value="category2">Category 2</option>
+                    <!-- Add more categories as needed -->
+                </select>
+            </div>
+            
+            <!-- Filter by Price Range -->
+            <div class="form-group">
+                <label for="filter-price-range">Filter by Price Range:</label>
+                <input type="text" id="filter-price-range" name="filter-price-range" placeholder="e.g., $10 - $100">
+            </div>
+            
+            <!-- Filter by Condition -->
+            <div class="form-group">
+                <label for="filter-condition">Filter by Condition:</label>
+                <select id="filter-condition" name="filter-condition">
+                    <option value="">Select Condition</option>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                </select>
+            </div>
+            
+            <!-- Sort Options -->
+            <div class="form-group">
+                <label for="sort-options">Sort by:</label>
+                <select id="sort-options" name="sort-options">
+                    <option value="price-low-high">Price (Low to High)</option>
+                    <option value="price-high-low">Price (High to Low)</option>
+                    <option value="newest">Newest Listings</option>
+                    <option value="popular">Most Popular</option>
+                </select>
+            </div>
+            
+            <!-- Advanced Search Options -->
+            <div class="form-group">
+                <label for="advanced-search">Advanced Search Options:</label>
+                <input type="checkbox" id="advanced-search" name="advanced-search">
+                <label for="advanced-search">Enable Advanced Search</label>
+            </div>
+            
+            <!-- Search by Location -->
+            <div class="form-group">
+                <label for="search-location">Search by Location:</label>
+                <input type="text" id="search-location" name="search-location" placeholder="Enter location">
+            </div>
+            
+            <!-- Search by Seller Rating -->
+            <div class="form-group">
+                <label for="search-seller-rating">Search by Seller Rating:</label>
+                <select id="search-seller-rating" name="search-seller-rating">
+                    <option value="">Select Rating</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+            
+            <!-- Filter by Brand -->
+            <div class="form-group">
+                <label for="filter-brand">Filter by Brand:</label>
+                <select id="filter-brand" name="filter-brand">
+                    <option value="">Select Brand</option>
+                    <option value="brand1">Brand 1</option>
+                    <option value="brand2">Brand 2</option>
+                    <!-- Add more brands as needed -->
+                </select>
+            </div>
+            
+            <!-- Filter by Seller Type -->
+            <div class="form-group">
+                <label for="filter-seller-type">Filter by Seller Type:</label>
+                <select id="filter-seller-type" name="filter-seller-type">
+                    <option value="">Select Seller Type</option>
+                    <option value="individual">Individual</option>
+                    <option value="business">Business</option>
+                </select>
+            </div>
+            
+            <!-- Filter by Item Type -->
+            <div class="form-group">
+                <label for="filter-item-type">Filter by Item Type:</label>
+                <select id="filter-item-type" name="filter-item-type">
+                    <option value="">Select Item Type</option>
+                    <option value="type1">Type 1</option>
+                    <option value="type2">Type 2</option>
+                    <!-- Add more item types as needed -->
+                </select>
+            </div>
+            
+            <!-- Search Suggestions -->
+            <div class="form-group">
+                <label for="search-suggestions">Search Suggestions:</label>
+                <input type="text" id="search-suggestions" name="search-suggestions" placeholder="Suggestions will appear here">
+            </div>
+            
+            <!-- Recent Searches -->
+            <div class="form-group">
+                <label for="recent-searches">Recent Searches:</label>
+                <input type="text" id="recent-searches" name="recent-searches" placeholder="Recent searches will appear here">
+            </div>
+            
+            <!-- Saved Searches -->
+            <div class="form-group">
+                <label for="saved-searches">Saved Searches:</label>
+                <input type="text" id="saved-searches" name="saved-searches" placeholder="Saved searches will appear here">
+            </div>
+            
+            <!-- Search History -->
+            <div class="form-group">
+                <label for="search-history">Search History:</label>
+                <input type="text" id="search-history" name="search-history" placeholder="Search history will appear here">
+            </div>
+        </div>
+
+        <!-- User Account Features -->
+        <div class="section" id="user-account-features">
+            <h2>User Account Features</h2>
+
+            <!-- User Profile -->
+            <div class="form-group">
+                <label for="user-profile">User Profile:</label>
+                <input type="text" id="user-profile" name="user-profile" placeholder="Enter profile information">
+            </div>
+            
+            <!-- Profile Picture Upload -->
+            <div class="form-group">
+                <label for="profile-picture">Profile Picture Upload:</label>
+                <input type="file" id="profile-picture" name="profile-picture">
+                <img src="#" alt="Profile Picture" class="profile-picture" id="profile-picture-preview">
+            </div>
+            
+            <!-- Update Personal Information -->
+            <div class="form-group">
+                <label for="update-personal-info">Update Personal Information:</label>
+                <input type="text" id="update-personal-info" name="update-personal-info" placeholder="Update your personal info">
+            </div>
+            
+            <!-- Change Password -->
+            <div class="form-group">
+                <label for="change-password">Change Password:</label>
+                <input type="password" id="change-password" name="change-password" placeholder="Enter new password">
+                <input type="password" id="retype-password" name="retype-password" placeholder="Retype new password">
+            </div>
+            
+            <!-- View Purchase History -->
+            <div class="form-group">
+                <label for="view-purchase-history">View Purchase History:</label>
+                <input type="text" id="view-purchase-history" name="view-purchase-history" placeholder="Purchase history will appear here">
+            </div>
+            
+            <!-- View Selling History -->
+            <div class="form-group">
+                <label for="view-selling-history">View Selling History:</label>
+                <input type="text" id="view-selling-history" name="view-selling-history" placeholder="Selling history will appear here">
+            </div>
+            
+            <!-- Manage Listings -->
+            <div class="form-group">
+                <label for="manage-listings">Manage Listings:</label>
+                <input type="text" id="manage-listings" name="manage-listings" placeholder="Manage your listings here">
+            </div>
+            
+            <!-- Favorite Listings -->
+            <div class="form-group">
+                <label for="favorite-listings">Favorite Listings:</label>
+                <input type="text" id="favorite-listings" name="favorite-listings" placeholder="Your favorite listings will appear here">
+            </div>
+            
+            <!-- Saved Items -->
+            <div class="form-group">
+                <label for="saved-items">Saved Items:</label>
+                <input type="text" id="saved-items" name="saved-items" placeholder="Your saved items will appear here">
+            </div>
+            
+            <!-- Pending Orders -->
+            <div class="form-group">
+                <label for="pending-orders">Pending Orders:</label>
+                <input type="text" id="pending-orders" name="pending-orders" placeholder="Pending orders will appear here">
+            </div>
+            
+            <!-- Completed Orders -->
+            <div class="form-group">
+                <label for="completed-orders">Completed Orders:</label>
+                <input type="text" id="completed-orders" name="completed-orders" placeholder="Completed orders will appear here">
+            </div>
+            
+            <!-- Account Settings -->
+            <div class="form-group">
+                <label for="account-settings">Account Settings:</label>
+                <input type="text" id="account-settings" name="account-settings" placeholder="Manage your account settings here">
+            </div>
+            
+            <!-- Notification Settings -->
+            <div class="form-group">
+                <label for="notification-settings">Notification Settings:</label>
+                <input type="text" id="notification-settings" name="notification-settings" placeholder="Manage your notification settings here">
+            </div>
+            
+            <!-- Privacy Settings -->
+            <div class="form-group">
+                <label for="privacy-settings">Privacy Settings:</label>
+                <input type="text" id="privacy-settings" name="privacy-settings" placeholder="Manage your privacy settings here">
+            </div>
+            
+            <!-- Billing Information -->
+            <div class="form-group">
+                <label for="billing-information">Billing Information:</label>
+                <input type="text" id="billing-information" name="billing-information" placeholder="Enter your billing information">
+            </div>
+            
+            <!-- Payment Methods -->
+            <div class="form-group">
+                <label for="payment-methods">Payment Methods:</label>
+                <input type="text" id="payment-methods" name="payment-methods" placeholder="Manage your payment methods here">
+            </div>
+            
+            <!-- Transaction History -->
+            <div class="form-group">
+                <label for="transaction-history">Transaction History:</label>
+                <input type="text" id="transaction-history" name="transaction-history" placeholder="Your transaction history will appear here">
+            </div>
+            
+            <!-- Seller Dashboard -->
+            <div class="form-group">
+                <label for="seller-dashboard">Seller Dashboard:</label>
+                <input type="text" id="seller-dashboard" name="seller-dashboard" placeholder="Seller dashboard information">
+            </div>
+            
+            <!-- Buyer Dashboard -->
+            <div class="form-group">
+                <label for="buyer-dashboard">Buyer Dashboard:</label>
+                <input type="text" id="buyer-dashboard" name="buyer-dashboard" placeholder="Buyer dashboard information">
+            </div>
+            
+            <!-- Account Verification -->
+            <div class="form-group">
+                <label for="account-verification">Account Verification:</label>
+                <input type="text" id="account-verification" name="account-verification" placeholder="Verification status and info">
+            </div>
+            
+            <!-- Two-Factor Authentication -->
+            <div class="form-group">
+                <label for="two-factor-authentication">Two-Factor Authentication:</label>
+                <input type="checkbox" id="two-factor-authentication" name="two-factor-authentication">
+                <label for="two-factor-authentication">Enable Two-Factor Authentication</label>
+            </div>
+            
+            <!-- Deactivate Account -->
+            <div class="form-group">
+                <label for="deactivate-account">Deactivate Account:</label>
+                <input type="checkbox" id="deactivate-account" name="deactivate-account">
+                <label for="deactivate-account">Deactivate Account</label>
+            </div>
+            
+            <!-- Save Button -->
+            <div class="form-group">
+                <button class="btn" type="submit">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example script to show profile picture preview
+        document.getElementById('profile-picture').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profile-picture-preview').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
